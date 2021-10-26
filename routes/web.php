@@ -22,9 +22,11 @@ use App\Http\Controllers\UsuarioController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("inicio");
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/reclamos', [ReclamoController::class, 'crear'])->middleware(['auth']);
+Route::post('/cliente/crear', [ClienteController::class, 'crear'])->middleware(['auth']);
+Route::post('/reclamo/crear', [ReclamoController::class, 'crear'])->middleware(['auth']);
+Route::post('/usuario/crear', [UsuarioController::class, 'crear'])->middleware(['auth']);
