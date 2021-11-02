@@ -18,4 +18,11 @@ class UsuarioController extends Controller
             return redirect(route('login'));
         }
     }
+
+    public function eliminar()
+    {
+        $usuario = Usuario::find($id);
+        $usuario->delete();
+        return "Usuario eliminado";
+    }
 }

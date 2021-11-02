@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Reclamo;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class ReclamoController extends Controller
@@ -17,5 +18,18 @@ class ReclamoController extends Controller
         } else {
             return redirect(route('login'));
         }
+    }
+
+    public function eliminar()
+    {
+        $reclamo = Reclamo::find($id);
+        $reclamo->delete();
+        return "Reclamo eliminado";
+    }
+
+    public function mostrar(){
+        $resultado =
+            DB::select('Select r.motivo, r.fecha_recepcion from reclamos');
+            dd($resultado);
     }
 }

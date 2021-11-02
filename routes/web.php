@@ -28,5 +28,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/cliente/crear', [ClienteController::class, 'crear'])->middleware(['auth']);
+Route::post('/cliente/crear', [ClienteController::class, 'mostrar'])->middleware(['auth']);
 Route::post('/reclamo/crear', [ReclamoController::class, 'crear'])->middleware(['auth']);
+Route::post('/reclamo/crear', [ReclamoController::class, 'mostrar'])->middleware(['auth']);
 Route::post('/usuario/crear', [UsuarioController::class, 'crear'])->middleware(['auth']);
+Route::post('/usuario/crear', [UsuarioController::class, 'mostrar'])->middleware(['auth']);
+
+Route::resource('cliente', ClienteController::class);
+Route::resource('reclamo', ReclamoController::class);
